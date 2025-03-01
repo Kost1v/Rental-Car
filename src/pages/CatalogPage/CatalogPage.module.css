@@ -1,0 +1,88 @@
+.wrapper {
+  padding: 0 120px;
+}
+.searchStyles {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 84px;
+  margin-bottom: 56px;
+}
+.searchLabel {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.33333;
+  color: #8d929a;
+  margin-bottom: 8px;
+}
+.inputFilter {
+  border-radius: 12px;
+  padding: 12px 16px;
+  width: 204px;
+  height: 44px;
+  background-color: #f7f7f7;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+  border: none;
+}
+select::-webkit-scrollbar {
+  width: 8px;
+}
+select::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 10px;
+  background: #dadde1;
+}
+.wrapperMileage {
+  display: flex;
+  flex-direction: column;
+}
+.inputMileage {
+  width: 160px;
+  padding: 12px 16px;
+  background-color: #f7f7f7;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+  border: none;
+}
+.search {
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 51px;
+  max-width: 156px;
+  height: 44px;
+  background-color: #3470ff;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #fff;
+  transition: background-color 250ms ease;
+}
+.search:hover {
+  background-color: #0b44cd;
+}
+.loadMore {
+  display: block;
+  margin: 0 auto 124px;
+  background-color: transparent;
+  border: 1px solid #3470ff;
+  border-radius: 12px;
+  padding: 12px 38px;
+  width: 159px;
+  height: 44px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+  transition: border 250ms ease;
+}
+.loadMore:hover {
+  border: 1px solid #0b44cd;
+}

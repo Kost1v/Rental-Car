@@ -1,0 +1,71 @@
+.carFirstInfo {
+  width: 488px;
+}
+.boxId {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.carTitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  text-align: center;
+  color: #101828;
+}
+.carId {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #8d929a;
+}
+.boxLocation {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.carPrice {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: #3470ff;
+  margin-bottom: 32px;
+}
+.carInfo {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+}
+.carDetailsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 110px;
+  margin-top: 68px;
+}
+.rental {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #101828;
+  margin-bottom: 20px;
+}
+.listInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.listIcon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+}
+.icon {
+  width: 16px;
+  height: 16px;
+}
