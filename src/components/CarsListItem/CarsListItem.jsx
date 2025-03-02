@@ -17,8 +17,7 @@ const CarsListItem = ({ car }) => {
     mileage,
   } = car;
   const [favorite, setFavorite] = useState(() => {
-    const savedFavorites =
-      JSON.parse(localStorage.getItem("savedCar")) || [];
+    const savedFavorites = JSON.parse(localStorage.getItem("savedCar")) || [];
     return savedFavorites.includes(id);
   });
 
@@ -62,7 +61,12 @@ const CarsListItem = ({ car }) => {
         <p>${rentalPrice}</p>
       </div>
       <p className={css.moreCarInfo}>
-        {address} | {rentalCompany} | {type} | {mileage}km
+        {address
+          .split(",")
+          .slice(1)
+          .join(" |")}{" "}
+        | {rentalCompany} | {type} | {mileage.toLocaleString("ua-UA")}
+        km
       </p>
       <Link to={`/catalog/${id}`} className={css.button}>
         Read more

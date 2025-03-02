@@ -1,25 +1,20 @@
 import { ErrorMessage, Field, Formik, Form } from "formik";
-import toast from "react-hot-toast";
-import * as Yup from "yup";
+import toast, { Toaster } from "react-hot-toast";
 import css from "./BookingForm.module.css";
+import { useState } from "react";
+import { validationSchema } from "../../utils/validationSchema";
+
 const INITIAL_VALUES = {
   name: "",
   email: "",
   date: "",
+  comment: "",
 };
 
-const validationSchema = Yup.object({
-  name: Yup.string()
-    .min(2, "Name must be at least 2 characters")
-    .max(20, "Name must be less than 20 characters")
-    .required("Name is required"),
-  email: Yup.string()
-    .email("Email must be valid")
-    .required("Email is required"),
-  date: Yup.string(),
-});
 const BookingForm = () => {
-  const onSubmit = (data, actions) => {    
+  const [inputType, setInputType] = useState("text");
+  const onSubmit = (data, actions) => {
+    setInputType("text");
     toast.success("Form submitted successfully");
     actions.resetForm();
   };
@@ -30,6 +25,7 @@ const BookingForm = () => {
       onSubmit={onSubmit}
     >
       <Form className={css.form}>
+        <Toaster />
         <p className={css.firstText}>Book your car now</p>
         <p className={css.secondText}>
           Stay connected! We are always ready to help you.
@@ -59,7 +55,9 @@ const BookingForm = () => {
           />
           <Field
             className={css.input}
-            type="text"
+            type={inputType}
+            onFocus={() => setInputType("date")}
+            onBlur={(e) => !e.target.value && setInputType("text")}
             name="date"
             placeholder="Booking date"
           />
@@ -68,12 +66,12 @@ const BookingForm = () => {
             name="date"
             component="span"
           />
-          <textarea
+          <Field
             className={css.textArea}
-            type="text"
+            as="textarea"
             name="comment"
             placeholder="Comment"
-          ></textarea>
+          />
         </div>
         <button type="submit" className={css.button}>
           Send

@@ -7,19 +7,29 @@ export const carInstance = axios.create({
 
 export const getCars = createAsyncThunk(
   "cars/getAll",
-  async (
-    {page} /*brand, rentalPrice, minMileage, maxMileage, limit = 12, page = 1 */,
-    thunkApi
-  ) => {
+  async ({ page }, thunkApi) => {
     try {
-      // const params = new URLSearchParams();
-      // if (brand) params.append("brand", brand);
-      // if (rentalPrice) params.append("rentalPrice", rentalPrice);
-      // if (minMileage) params.append("minMileage", minMileage);
-      // if (maxMileage) params.append("maxMileage", maxMileage);
-      // if (limit) params.append("limit", limit);
-      // if (page) params.append("page", page);
       const { data } = await carInstance.get(`/cars?page=${page}`);
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getCarsByFilter = createAsyncThunk(
+  "cars/getCarsByFilter",
+  async ({ page, brand, rentalPrice, minMileage, maxMileage }, thunkApi) => {
+    try {
+      const params = new URLSearchParams();
+      
+      if (page) params.append("page", page);
+      if (brand) params.append("brand", brand);
+      if (rentalPrice) params.append("rentalPrice", rentalPrice);
+      if (minMileage) params.append("minMileage", minMileage);
+      if (maxMileage) params.append("maxMileage", maxMileage);
+      const { data } = await carInstance.get(`/cars?${params}`);
+      
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -33,7 +43,7 @@ export const getCarById = createAsyncThunk(
       const { data } = await carInstance.get(`/cars/${id}`);
 
       return data;
-    } catch (error) {
+    } catch (error) {      
       return thunkApi.rejectWithValue(error.message);
     }
   }
@@ -43,7 +53,7 @@ export const getBrands = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const { data } = await carInstance.get("/brands");
-      
+
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
